@@ -1,0 +1,8 @@
+create - venv
+python -m venv venv
+source venv/Scripts/activate
+
+pip freeze
+pip freeze > requirements.txt
+
+python3 -m pip install -r requirements.txt 

@@ -18,16 +18,16 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     
-class PostCreateView(LoginRequiredMixin,CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title','content']
 
-    def form_valid(self,form):
+    def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title','content']
 
@@ -41,7 +41,7 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
             return True
         return False
 
-class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     success_url = '/'
 
